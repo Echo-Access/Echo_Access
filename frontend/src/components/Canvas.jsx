@@ -56,6 +56,13 @@ function Canvas() {
     });
   };
 
+  const resetDrawing = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    setPrediction('');
+  };
+
   return (
     <div className="App">
       <h1>Drawing to Text Converter</h1>
@@ -72,6 +79,7 @@ function Canvas() {
       <button onClick={() => predictDrawing()} disabled={isLoading}>
         {isLoading ? 'Loading...' : 'Predict'}
       </button>
+      <button onClick={() => resetDrawing()}>Reset</button> {/* Add reset button */}
       <div>Prediction: {prediction}</div>
     </div>
   );
